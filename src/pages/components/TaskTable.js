@@ -1,11 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import MUIDataTable from 'mui-datatables';
+import Button from '@material-ui/core/Button'
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 
+
+
+import {Link} from 'react-router-dom';
 import {getTasks} from '../../api';
+
+
 
 export default function TaskTable() {
     const [tasks, setTasks] = useState([]);
@@ -48,6 +54,16 @@ export default function TaskTable() {
 
     return (
         <>
+            <Button 
+                style = {{marginBottom: '10px'}}
+                variant = "contained" 
+                color = "primary"
+                component = {Link}
+                to = "/home/addtask"
+            >
+                Add a Task
+            </Button>
+
             <MUIDataTable 
                 title = {"Tasks"}
                 data = {tasks}

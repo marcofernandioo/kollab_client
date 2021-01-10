@@ -27,3 +27,12 @@ export function getTasks() {
             .catch((err) => reject(err));
     })
 }
+
+export function addTask (title, description, deadline) {
+    return new Promise((resolve, reject) => {
+        var url = `${URL}/tasks/create`;
+        axios.post(url, {title})
+        .then((response) => resolve(response))
+        .catch((err) => reject(err));
+    })
+}

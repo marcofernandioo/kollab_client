@@ -20,6 +20,7 @@ import MailIcon from '@material-ui/icons/Mail';
 
 import {Switch, Route} from 'react-router-dom';
 import TaskTable from './components/TaskTable';
+import AddTask from './AddTask';
 import AllTasks from './AllTasks';
 
 const drawerWidth = 240;
@@ -179,6 +180,7 @@ export default function Base (props) {
         <main className={classes.main}>
           <Switch>
               <Route path = "/home/tasks" component = {TaskTable}/>
+              <Route path = "/home/addtask" component = {AddTask} />
           </Switch>
         </main>
         
