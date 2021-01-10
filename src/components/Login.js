@@ -7,7 +7,22 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import {login} from '../api';
 
-const useStyles = makeStyles(() => ({}))
+const useStyles = makeStyles(() => ({
+    root: {
+        flexGrow: 1,
+    },
+    textField: {
+        marginTop: '10px', 
+        marginBottom: '10px'
+    }, 
+    button: {
+        backgroundColor: '#00cccc', 
+        color: '#ffffff',
+    }, 
+    card: {
+        width: '300px',
+    }
+}))
 
 export default function Login () {
     const [email, setEmail] = useState('');
@@ -30,7 +45,7 @@ export default function Login () {
     return (
         <Card variant = "outlined" className = {classes.card}>
             <CardContent>
-                <Grid container direction = "column" justify = "flex-start" alignItems = "center">
+                <Grid container direction = "column" justify = "flex-end" alignItems = "center">
                     <h3>User Login</h3>
                     <TextField type = "text" label = "Email" variant  = "outlined" onChange = {onChangeEmail} value = {email} className = {classes.textField}/>
                     <TextField type = "password" label = "Password" variant  = "outlined"  onChange = {onChangePassword} value = {password} className = {classes.textField}/>

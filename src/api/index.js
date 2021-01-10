@@ -1,14 +1,28 @@
 import axios from 'axios';
 
-//API URL
-const URL = 'http://localhost:6000';
+//Base API URL
+var URL = 'http://localhost:8000';
 
 export function login(email, password) {
     return new Promise((resolve, reject) => {
-        const url = `${URL}/account/login`;
-        axios.post(url, {email, password})
+        var loginUrl = `${URL}/accounts/login`;
+        axios.post(loginUrl, {
+            email: email, 
+            password: password
+        })
+        .then((response) => {
+            resolve(response);
+        })
+        .catch((err) => reject(err));
+    })
+}
+
+export function getTasks() {
+    return new Promise((resolve, reject) => {
+        var url = `${URL}/tasks/alltasks`;
+        axios.get(url)
             .then((response) => {
-                resolve(response);
+                resolve(response)
             })
             .catch((err) => reject(err));
     })
