@@ -42,8 +42,7 @@ export default function Login () {
         login(email,password)
         .then((res) => {
             if (res.data.status == 'ok') 
-                window.location.href = '/home';
-                // console.log(res.data);
+                window.location.href = '/home/tasks';
             else alert(res.data.msg)
         })
         .catch((error) => console.log(error));

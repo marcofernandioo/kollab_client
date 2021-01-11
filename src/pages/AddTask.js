@@ -12,7 +12,8 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-import addTask from '../api';
+
+import {addTask} from '../api';
 
 const useStyles = makeStyles(() => ({
     columnData: {
@@ -53,11 +54,21 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
+
 export default function AddTask() {
     const classes = useStyles();
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
-    const [deadline, setDeadline] = useState(new Date(''));
+    const [deadline, setDeadline] = useState(new Date());
+
+    const onSubmitTask = () => {
+        addTask(title, desc, deadline)
+        .then((res) => {
+            if (res.data.status === 'ok') window.location.href = '/home/tasks';
+            else alert(res.data.msg);
+        })
+        .catch((err) => alert(err));
+    }
 
     return (
         <div>
@@ -97,9 +108,8 @@ export default function AddTask() {
                                     <KeyboardDatePicker
                                         disableToolbar
                                         variant="inline"
-                                        format="MM/dd/yyyy"
+                                        format="dd/MM/yyyy"
                                         margin="normal"
-                                        id="date-picker-inline"
                                         value={deadline}
                                         onChange={(e) => setDeadline(e)}
                                         KeyboardButtonProps={{
@@ -112,7 +122,15 @@ export default function AddTask() {
                         </div>
                         <Button
                             variant = "contained"
-                            onClick = {() => console.log(deadline, desc, title)}
+                            onClick = {() => window.location.href = '/home/tasks'}
+                            style = {{marginRight: '20px'}}
+                        >
+                            Back
+                        </Button>
+                        <Button
+                            variant = "contained"
+                            onClick = {onSubmitTask}
+                            color = "secondary"
                         >
                             Create
                         </Button>

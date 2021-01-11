@@ -8,6 +8,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 
 
+
 import {Link} from 'react-router-dom';
 import {getTasks} from '../../api';
 
@@ -19,22 +20,27 @@ export default function TaskTable() {
         {
             name: 'title',
             label: 'Task',
-            options: {sort: true}
+            // options: {sort: true}
         },
         {
             name: 'description',
             label: 'Description',
-            options: {sort: true}
+            // options: {sort: true}
         }, 
         {
             name: 'createDate',
-            label: 'Created',
-            options: {sort: true}
+            label: 'Created Date',
+            // options: {sort: true}
         },
         {
-            name: 'doBy',
-            label: 'Assigned To',
-            options: {sort: true}
+            name: 'status',
+            label: 'Status',
+            // options: {sort: true}
+        },
+        {
+            name: 'deadline',
+            label: 'Deadline',
+            // options: {sort: true}
         }
     ];
 

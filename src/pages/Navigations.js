@@ -17,6 +17,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import LibraryBooksOutlinedIcon from '@material-ui/icons/LibraryBooksOutlined';
+import GroupOutlinedIcon from '@material-ui/icons/GroupOutlined';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import Avatar from '@material-ui/core/Avatar';
 
 import {Switch, Route} from 'react-router-dom';
 import TaskTable from './components/TaskTable';
@@ -97,6 +101,16 @@ avatar: {
 main: {
     marginLeft: '100px', 
     marginTop: '100px'
+}, 
+profile: {
+    toolbar: {
+    display: 'block',
+    alignItems: 'left',
+    justifyContent: 'flex-end',
+    padding: theme.spacing(0, ),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+},
 }
   }));
 
@@ -138,6 +152,7 @@ export default function Base (props) {
             <Typography variant="h6" noWrap>
               Kollab
             </Typography>
+            
           </Toolbar>
         </AppBar>
         <Drawer
@@ -153,6 +168,14 @@ export default function Base (props) {
             }),
           }}
         >
+          <div className = {classes.profile}>
+            {/* <IconButton color="inherit">
+              <Avatar className={classes.avatar}>MF</Avatar>
+            </IconButton>
+            <Typography variant="h6" noWrap>
+              Marc F
+            </Typography> */}
+          </div>
           <div className={classes.toolbar}>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -160,21 +183,21 @@ export default function Base (props) {
           </div>
           <Divider />
           <List>
-            {['Personal Tasks', 'Teams'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            <ListItem button onClick = {() => window.location.href = '/home/tasks'}>
+              <ListItemIcon ><LibraryBooksOutlinedIcon /></ListItemIcon>
+              <ListItemText primary = {"Tasks"}/>
+            </ListItem>
+            <ListItem button onClick = {() => window.location.href = '/home/teams'}>
+              <ListItemIcon ><GroupOutlinedIcon /></ListItemIcon>
+              <ListItemText primary = {"Teams"}/>
+            </ListItem>
           </List>
           <Divider />
           <List>
-            {['Settings'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+            <ListItem button onClick = {() => window.location.href = '/settings'}>
+              <ListItemIcon ><SettingsOutlinedIcon /></ListItemIcon>
+              <ListItemText primary = {"Settings"}/>
+            </ListItem>
           </List>
         </Drawer>
         <main className={classes.main}>
