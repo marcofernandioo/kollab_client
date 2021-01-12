@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { register } from '../../api';
-import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
     columnData: {
@@ -85,7 +84,7 @@ export default function SignUp () {
                     <Grid>
                         <h3>Join the cult!</h3>
                         <div className = {classes.rowContainer}>
-                            <div className = {classes.columnName}>Full Name</div>
+                            <div className = {classes.columnName}>Username</div>
                             <div className = {classes.columnData}> 
                                 <TextField
                                     required

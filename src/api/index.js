@@ -40,8 +40,28 @@ export function getTasks() {
 export function addTask (title, description, deadline) {
     return new Promise((resolve, reject) => {
         var url = `${URL}/tasks/create/account`;
-        axios.post(url, {title:title, description:description, deadline:deadline})
+        axios.post(url, {title, description, deadline})
         .then((response) => resolve(response))
         .catch((err) => reject(err));
+    })
+}
+
+export function editTask (id, title, description, deadline) {
+    return new Promise((resolve, reject) => {
+        var url = `${URL}/tasks/update`;
+        axios.post(url, {id, title, description, deadline})
+        .then((response) => resolve(response))
+        .catch((err) => reject(err));
+    })
+}
+
+export function getTask (id) {
+    return new Promise((resolve, reject) => {
+        var url = `${URL}/tasks/find/${id}`;
+        axios.get(url)
+            .then((response) => {
+                resolve(response)
+            })
+            .catch((err) => reject(err));
     })
 }

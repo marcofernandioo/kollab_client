@@ -6,13 +6,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 
-
-
-
 import {Link} from 'react-router-dom';
 import {getTasks} from '../../api';
-
-
 
 export default function TaskTable() {
     const [tasks, setTasks] = useState([]);
@@ -22,11 +17,11 @@ export default function TaskTable() {
             label: 'Task',
             // options: {sort: true}
         },
-        {
-            name: 'description',
-            label: 'Description',
-            // options: {sort: true}
-        }, 
+        // {
+        //     name: 'description',
+        //     label: 'Description',
+        //     // options: {sort: true}
+        // }, 
         {
             name: 'createDate',
             label: 'Created Date',
@@ -41,6 +36,32 @@ export default function TaskTable() {
             name: 'deadline',
             label: 'Deadline',
             // options: {sort: true}
+        }, 
+        {
+            name: '_id', 
+            label: ' ', 
+            options: {
+                filter: false, 
+                sort: false, 
+                customBodyRender: (id) => {
+                    return (
+                        <div>
+                            <Tooltip title = "Edit Task">
+                                <IconButton>
+                                    <EditIcon onClick = {() => onEditTask(id)} />
+                                </IconButton>
+                            </Tooltip>
+                            <Tooltip title = "Delete Task">
+                                <IconButton>
+                                    <DeleteIcon onClick = {() => onDeleteTask(id)} />
+                                </IconButton>
+                            </Tooltip>
+                            
+                            
+                        </div>
+                    )
+                }
+            }
         }
     ];
 
@@ -56,6 +77,15 @@ export default function TaskTable() {
         })
         .catch((err) => alert(err))
     }, [])
+
+    const onEditTask = (id) => {
+        // console.log("Edit: ", id);
+        window.location.href = '/home/edit/'+id;
+    }
+
+    const onDeleteTask = (id) => {
+        console.log("Delete: ", id);
+    }
 
 
     return (
