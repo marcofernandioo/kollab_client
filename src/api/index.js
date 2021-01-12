@@ -65,3 +65,12 @@ export function getTask (id) {
             .catch((err) => reject(err));
     })
 }
+
+export function deleteTask(id) {
+    return new Promise ((resolve, reject) => {
+        var url = `${URL}/tasks/delete/${id}`
+        axios.get(url)
+        .then((response) => resolve(response))
+        .catch((err) => reject(err));
+    })
+}

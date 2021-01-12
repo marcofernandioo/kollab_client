@@ -24,9 +24,11 @@ import Avatar from '@material-ui/core/Avatar';
 
 import {Switch, Route} from 'react-router-dom';
 import TaskTable from './components/TaskTable';
+import DeleteTaskDialog from './components/DeleteTaskDialog';
 import AddTask from './AddTask';
 import EditTask from './EditTask';
 import AllTasks from './AllTasks';
+
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -206,6 +208,7 @@ export default function Base (props) {
               <Route path = "/home/tasks" component = {TaskTable}/>
               <Route path = "/home/addtask" component = {AddTask} />
               <Route path = "/home/edit/:id" component = {EditTask} />
+              <Route path = "/home/delete/:id" component = {DeleteTaskDialog} />
           </Switch>
         </main>
         

@@ -84,10 +84,6 @@ export default function EditTask() {
 
     return (
         <div>
-            {/* <h1>Stinky id: {id}</h1> */}
-            {/* <h3>{title}</h3> */}
-            {/* <h3>{desc}</h3> */}
-            {/* <h3>{deadline}</h3> */}
             <Card>
                 <CardContent>
                     <Grid>

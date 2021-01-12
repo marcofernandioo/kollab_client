@@ -9,7 +9,10 @@ import Tooltip from '@material-ui/core/Tooltip';
 import {Link} from 'react-router-dom';
 import {getTasks} from '../../api';
 
+import DeleteTaskDialog from './DeleteTaskDialog';
+
 export default function TaskTable() {
+    const [errDialog, setErrDialog] = React.useState(false);
     const [tasks, setTasks] = useState([]);
     const columns = [
         {
@@ -53,10 +56,10 @@ export default function TaskTable() {
                             </Tooltip>
                             <Tooltip title = "Delete Task">
                                 <IconButton>
-                                    <DeleteIcon onClick = {() => onDeleteTask(id)} />
+                                    <DeleteIcon onClick = {() => setErrDialog(true)} />
                                 </IconButton>
                             </Tooltip>
-                            
+                            <DeleteTaskDialog open = {errDialog} id = {id}/>
                             
                         </div>
                     )
@@ -78,15 +81,22 @@ export default function TaskTable() {
         .catch((err) => alert(err))
     }, [])
 
+    useEffect(() => {
+        return (
+            <DeleteTaskDialog />
+        )
+    }, [errDialog])
+
     const onEditTask = (id) => {
         // console.log("Edit: ", id);
         window.location.href = '/home/edit/'+id;
     }
 
-    const onDeleteTask = (id) => {
-        console.log("Delete: ", id);
+    const onDeleteTask = () => {
+        setErrDialog(true);
     }
 
+    
 
     return (
         <>
@@ -99,7 +109,7 @@ export default function TaskTable() {
             >
                 Add a Task
             </Button>
-
+        
             <MUIDataTable 
                 title = {"Tasks"}
                 data = {tasks}
