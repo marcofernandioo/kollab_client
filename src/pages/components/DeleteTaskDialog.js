@@ -31,7 +31,7 @@ export default function DeleteTaskDialog(props) {
             //     console.log('task deleted');
             // }
             // else alert(res.data.msg);
-            console.log(id);
+            alert(`Task with id: ${id} has been deleted`);
             // alert("task deleted!");
         })
         .catch((err) => alert(err));

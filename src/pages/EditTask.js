@@ -73,12 +73,13 @@ export default function EditTask() {
     useEffect(()=> {
         getTask(id)
         .then((res) => {
+            // console.log(res.data.data.title);
             setTitle(res.data.data.title);
             setDesc(res.data.data.description);
             setDeadline(res.data.data.deadline);
         })
         .catch((err) => alert(err))
-    })
+    }, [])
 
     
 
@@ -96,8 +97,9 @@ export default function EditTask() {
                                     variant = "outlined" 
                                     fullWidth 
                                     className = {classes.textField} 
-                                    onChange = {(e) => setTitle(e.target.value)}
                                     value = {title}
+                                    onChange = {(e) => setTitle(e.target.value)}
+                                    
                                 />
                             </div>
                         </div>

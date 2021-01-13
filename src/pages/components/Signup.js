@@ -87,7 +87,7 @@ export default function SignUp () {
                             <div className = {classes.columnName}>Username</div>
                             <div className = {classes.columnData}> 
                                 <TextField
-                                    required
+                                    required = "true"
                                     type = "text" 
                                     variant = "outlined" 
                                     fullWidth 
@@ -100,7 +100,7 @@ export default function SignUp () {
                             <div className = {classes.columnName}>Email</div>
                             <div className = {classes.columnData}> 
                                 <TextField 
-                                    required
+                                    required = "true"
                                     type = "text" 
                                     variant = "outlined" 
                                     fullWidth 
@@ -113,7 +113,7 @@ export default function SignUp () {
                             <div className = {classes.columnName}>Password</div>
                             <div className = {classes.columnData}> 
                                 <TextField 
-                                    required
+                                    required = "true"
                                     type = "password" 
                                     variant = "outlined" 
                                     fullWidth 
@@ -126,7 +126,7 @@ export default function SignUp () {
                             <div className = {classes.columnName}>Confirm Password</div>
                             <div className = {classes.columnData}> 
                                 <TextField 
-                                    required
+                                    required = "true"
                                     type = "password" 
                                     variant = "outlined" 
                                     fullWidth 

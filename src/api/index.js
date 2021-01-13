@@ -74,3 +74,14 @@ export function deleteTask(id) {
         .catch((err) => reject(err));
     })
 }
+
+export function logout() {
+    return new Promise((resolve, reject) => {
+        var url = `${URL}/accounts/logout/`;
+        axios.get(url)
+            .then((response) => {
+                resolve(response)
+            })
+            .catch((err) => reject(err));
+    })
+}

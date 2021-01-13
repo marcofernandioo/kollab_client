@@ -6,6 +6,9 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
+
+import {logout} from '../api';
+
 const useStyles = makeStyles(() => ({
     columnData: {
         width: '600px'
@@ -45,11 +48,25 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
+const onLogout = () => {
+    console.log('logout')
+    logout()
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+}
+
 export default function AccountSettings () {
+    const classes = useStyles();
     return (
         <div>
             <h2>General Account Settings</h2>
-
+            <Button
+                variant = "contained"
+                onClick = {onLogout}
+                color = "secondary"
+            >
+            Logout
+            </Button>
         </div>
     )
 }
